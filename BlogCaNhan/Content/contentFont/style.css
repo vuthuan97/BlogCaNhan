@@ -1,0 +1,93 @@
+.header{
+    background-color: black;
+    height: 120px;
+    color: lavender;
+}
+
+.media img{
+    height: 90px;
+    width: 90px;
+}
+.menu-top a.btn{
+    width: 100px;
+}
+.btn-dropdown:first-child{
+width: 120px;
+}
+.menu-cache{
+    height: 50%;
+}
+@media only screen and (max-width:768px){
+    .header{
+        height: 190px;
+    }
+    .menu-cache{
+    height: 0%;
+    }
+}
+.body-top{background-color: white;
+border-bottom: 1px solid rgb(137, 252, 194);
+}
+.body-top img{
+height: 180px;
+width: 100%;
+}
+.body-web{
+    min-height: 600px;
+    background-color:white;
+}
+.content-left{
+min-height:600px;
+}
+#btnshow{
+  border-left-color: darkkhaki;
+}
+.form-write{
+    margin-top:20px;
+   
+}
+#card-Post{
+    display: none;
+}
+.top-content-left{
+    height: 40px;
+    padding: 0;
+    margin:0;
+}
+.content-right {
+    min-height: 600px;
+}
+.title-for{
+    height: 50px;
+    max-width: 100%;
+
+}
+.detail-contact{
+    margin-left: 100px;
+}
+.all-contact{
+    margin-top:20px;
+
+}
+.btn-search{
+    margin-left: 10px;
+}
+img.btn-dropdown{
+    height: 30px;
+    width: 30px;
+}
+.media img{
+    width: 80px;
+    height: 80px;
+}
+.thongbaoblog{
+    width:400px;
+    position:absolute;
+    display:none;
+    z-index:1;
+}
+.footer-web{
+    margin-top: 20px;
+    min-height: 120px;
+}
+

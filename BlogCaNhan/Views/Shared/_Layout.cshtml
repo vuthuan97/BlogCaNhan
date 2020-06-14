@@ -1,0 +1,85 @@
+﻿@using  BlogCaNhan.Data.Entities
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vũ Thuận</title>
+    <link rel="stylesheet" href="~/Content/contentFont/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/contentFont/style.css">
+    <script src="~/Content/contentFont/jquery.min.js"></script>
+    <script src="~/Content/contentFont/js/bootstrap.min.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="~/Content/contentFont/query_font.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row header">
+            <div class="col-md-5">
+                <div class="media ml-5  mt-3 w-100">
+                    <img src="~/Content/contentFont/img/logo.jpg" class="rounded-circle align-self-center mr-3 ">
+                    <div class="media-body ml-2">
+                        <h2><a class="text-white" href="@Url.Action("Index","Home")">MY WEBSITE</a></h2>
+                        <p class="title">You will need me</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="menu-cache"></div>
+                <div class=" h-30  btn-group menu-top">
+                    <a class="btn btn-primary" href="@Url.Action("Index","Home")">About Me</a>
+                    <a class="btn btn-primary" href="@Url.Action("Index","Blog")">Blog</a>
+
+                    @Html.Partial("~/Views/Home/MenuPrograming.cshtml",ViewBag.lstmenu as IEnumerable<DanhMucBaiViet>)
+                </div>
+
+            </div>
+            <div class="col-md-2">
+                <div class="menu-cache"></div>
+
+                <div class="user-login">
+                    <img class="btn-dropdown rounded-circle" src="~/Content/contentFont/img/logo.jpg" data-toggle="dropdown" />
+                    <div class="dropdown-menu">
+                        <span class="dropdown-item"><i class="fa fa-user" aria-hidden="true"></i> Admin &times;</span>
+                        <a class="dropdown-item" href="#">
+                            <i class="fa fa-address-card" aria-hidden="true"></i>
+                            Contact
+                        </a>
+                        <a class="dropdown-item" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></i>Logout</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row body-top">
+            <img src="~/Content/contentFont/img/banner1.png" class="img-fluid">
+        </div>
+        <div class="row body-web pl-1 pr-1">
+            <div class="col-md-8 content-left pl-1 pr-0 mt-4">
+               @RenderBody()
+
+            </div>
+
+            <div class="col-md-4 content-right">
+                @Html.Partial("~/Views/Home/SendContact.cshtml")
+            </div>
+        </div>
+
+        <div class="row footer-web bg-secondary jumbotron">
+            <h3 class="mx-auto">Copy vuthuan97ss</h3>
+        </div>
+
+    </div>
+</body>
+
+</html

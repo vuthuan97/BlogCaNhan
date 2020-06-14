@@ -1,0 +1,21 @@
+﻿@using BlogCaNhan.Data.Entities
+@model IEnumerable<DanhMucBaiViet>
+<div class="btn-group btn-dropdown">
+    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+        Programing
+    </button>
+    <div class="dropdown-menu">
+        @foreach (var item in Model)
+        {
+            <a class="dropdown-item" href="@Url.Action("Index","BaiViet",new {@maDM=item.DMBVID})">@item.TenDMBV</a>
+        }
+        @*<a class="dropdown-item" href="./programing.html">C# căn bản</a>
+        <a class="dropdown-item" href="./programing.html">c# nâng cao</a>
+        <a class="dropdown-item" href="./programing.html">C# với OPP</a>
+        <a class="dropdown-item" href="./programing.html">c# với Winform & WPF</a>
+        <a class="dropdown-item" href="./programing.html">C# ASP.NET</a>
+        <a class="dropdown-item" href="./programing.html">c# ASP.NET MVC</a>
+        <a class="dropdown-item" href="./programing.html">C# ASP.MVC CORE</a>*@
+
+    </div>
+</div>

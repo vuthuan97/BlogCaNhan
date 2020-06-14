@@ -1,0 +1,146 @@
+﻿@using BlogCaNhan.Data.Entities
+@model  IEnumerable<Blog>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/Query_tuviet.js"></script>
+<!-- nội dung website -->
+
+<div class="jumbotron pt-3" style="position:absolute">
+    <div class="btn-group ">
+        <div class="btn-group">
+            <input type="button" class="btn btn-primary" onclick="vietbai()" value="Viết bài">
+        </div>
+        <button id="btnshow" type="button" onclick="showform()" class="btn btn-primary h-75">
+            Tìm kiếm  bài viết
+        </button>
+        <div id="form-search" class="h-100">
+            <form method="GET" name="formSearch" class="btn-group">
+                <input class="form-control" type="text" placeholder="Enter keyword" required="true" />
+                <button class="btn btn-secondary" type="submit">
+                    <i class="fa fa-search"
+                       aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- viết bài -->
+    <div class="form-write card " id="card-Post">
+        <div class="card-header">
+            <h3 class="mx-auto"> Create new posts </h3>
+        </div>
+        <div class="card-body">
+            @using (Ajax.BeginForm("VietBlog", "Blog", new AjaxOptions() { OnSuccess = "fnSuccess", OnFailure = "fnFail" },new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-group">
+                    <label for="title">Title :</label>
+                    <input class="form-control" type="text" required="true" name="tieuDe"
+                           id="title" />
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="category">Categories:</label>
+                            <select class="form-control" style="max-width: 400px;min-width: 200px;"
+                                    name="DMBlogID" id="category">
+                                <option value="-1">Select category</option>
+                                @foreach (var item in ViewBag.listDMBlog as IEnumerable<DanhMucBlog>)
+                                {
+                                    <option value="@item.DMBlogID">@item.tenDMBlog</option>
+                                }
+                                @*<option value="1">Category 1</option>
+                            <option value="2">Category 2</option>
+                            <option value="3">Category 3</option>
+                            <option value="4">Category 4</option>
+                            <option value="5">Category 5</option>*@
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="tag">Tag:</label>
+                            <input class="form-control" type="text" name="Tag" id="tag" required="true" />
+                        </div>
+                    </div>
+                </div>
+                <!-- thÔng báo tạo blog-->
+                <div class="thongbaoblog">
+                    <div class="alert  mx-auto" id="box-tb">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <p id="thongbao">thông báo</p>
+                    </div>
+                </div>
+                <!---->
+                <div class="row mb-2">
+                    <div class="form-group ml-3">
+                        <label for="uploadfile">Image Title:</label>
+                        <input class="form-control" type="file" name="HinhAnh">
+                    </div>
+                </div>
+                <div class="row content-write">
+                    <textarea class="form-control mx-auto" id="noidungviet" name="noiDungBlog"></textarea>
+                </div>
+                <div class="form-inline mt-5">
+                    <div class="col-md-10 col">
+                        <button class="btn btn-warning" type="submit" id="btnUp" name="btnUp">Create Post </button>
+
+                    </div>
+                    <div class="col-md-2 col">
+                        <button class="btn btn-info" type="button" onclick="vietbai()">
+                            Hide <span class=" fa fa-arrow-up"></span>
+                        </button>
+
+                    </div>
+                </div>
+
+
+
+            }
+
+        </div>
+
+
+    </div>
+    <!-- danh sách bài viêt-->
+    <div class="list-post mt-5">
+
+        @foreach (var item in Model)
+        {
+            <div class="media border bg-light pt-1 ">
+
+                <img class="rounded-circle" src="~/Content/contentFont/img/icon-spinner2.jpg" alt="">
+                <div class="media-body ml-4">
+
+                    <h2><a href="./chitietblog.html">@item.tieuDe</a></h2>
+                    <span class="font-italic">Posted on @item.ngayTao.ToString("dd/MM/yyyy")</span>
+                    <p class="font-italic">@item.DanhMucBlogs.tenDMBlog</p>
+                    <p>
+                        @{
+                            var noidung = Html.Raw(item.noiDungBlog);
+                            var noidungrutgon = string.Format("{0}</b></p>...", noidung.ToString().Substring(0, 400));
+                        }
+                        @*@Html.Raw(noidung)*@
+                        @*@Html.Raw(noidungrutgon)*@
+
+                        @noidungrutgon
+                    </p>
+                </div>
+            </div>
+        }
+
+        <div class="Pager mx-auto mt-2">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link">Prev</a></li>
+                <li class="page-item"><a class="page-link">1</a></li>
+                <li class="page-item"><a class="page-link">2</a></li>
+                <li class="page-item"><a class="page-link">Next</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+
+</div>
+
